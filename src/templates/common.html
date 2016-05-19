@@ -1,20 +1,23 @@
 <div class="object-table-module">
-	<div class="col-xs-12 col-sm-6 col-md-8 sorting-container">
-		<div ng-if="sortingType && sort.fields.length">
-			Sorting:
-			<div ng-repeat="sortField in sort.fields" class="sorting-badge">
-				<span class="glyphicon" ng-class="{'glyphicon-chevron-down':sort.reverse[$index], 'glyphicon-chevron-up':!sort.reverse[$index]}"></span>
-				{{::sortField}}
-				<span class="glyphicon glyphicon-remove close" ng-click="removeSorting()"></span>
-			</div>
-		</div>
+	<div class="top-container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-8">
+                <div ng-if="sortingType && sort.fields.length" class="sorting-container">
+                    <div ng-repeat="sortField in sort.fields" class="sorting-badge">
+                        <span class="glyphicon" ng-class="{'glyphicon-chevron-down':sort.reverse[$index], 'glyphicon-chevron-up':!sort.reverse[$index]}"></span>
+                        {{::sortField}}
+                        <span class="glyphicon glyphicon-remove close" ng-click="removeSorting()"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4" ng-if="search && 'separate'!=search">
+                <div class="search-container">
+                    <input type="text"  placeholder="Search" ng-model="$parent.globalSearch" class="pull-right form-control search" ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0 } }" ng-change="setCurrentPageForPageCtrl(0)"/>
+                    <i class="glyphicon glyphicon-search search_icon"></i>
+                </div>
+            </div>
+        </div>
 	</div>
-	<div class="form-group col-xs-12 col-sm-6 col-md-4" ng-if="search && 'separate'!=search">
-		<input type="text"  placeholder="Search" ng-model="$parent.globalSearch" class="row pull-right form-control search" ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0 } }" ng-change="setCurrentPageForPageCtrl(0)"/>
-		<i class="glyphicon glyphicon-search search_icon"></i>
-	</div>
-
-	<div class="clearfix"></div>
 <div class="back-cover">
 	<table class="table table-responsive table-bordered object-table" ng-mousedown="resizeStart($event)" ng-mouseup="resizeEnd($event)">
 		<thead ng-if="!customHeader">
