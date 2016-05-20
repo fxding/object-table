@@ -1,7 +1,8 @@
 <h2>Compound sorting</h2>
 
 <table object-table 
-data="data" 
+data="data"
+	   loading="isLoading"
 headers="Full Name,Money, Age" 
 fields="name,money,age" 
 paging="false" 
@@ -14,7 +15,8 @@ sorting="compound"
 </div>
 <textarea ui-codemirror ui-codemirror-opts="editorOptions">
 	<table  object-table 
-			data="data" 
+			data="data"
+			loading="isLoading"
 			headers="Full Name, Money, Age" 
 			fields="name, money, age" 
 			paging="false" 

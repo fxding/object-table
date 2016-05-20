@@ -9,6 +9,7 @@ angular.module('objectTable').directive('objectTable', ['$compile','$interpolate
     transclude: true,
     scope: {
       data: '=',
+      loading: '=?',
       display: '=?',
       resize: '=?',
       paging: '=?',

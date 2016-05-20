@@ -46,10 +46,10 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
     this.onEdit = $scope.onEdit;
 
     this._loadExternalData = function(url) {
-    $scope.dataIsLoading = true;
+    $scope.loading = true;
     $http.get(url).then(function(response) {
       $scope.data = response.data;
-      $scope.dataIsLoading = false;
+      $scope.loading = false;
     });
 
   };

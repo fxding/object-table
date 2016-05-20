@@ -1,7 +1,8 @@
 <h2>Custom rows and headers pattern:</h2>
 
 <table object-table 
-data="data" 
+data="data"
+	   loading="isLoading"
 data="exportDataVariable" 
 display="10" 
 fields="name,age,money" 
@@ -29,7 +30,8 @@ headers="Name,Age,$$$"
 <h3>In template:</h3>
 <textarea ui-codemirror ui-codemirror-opts="editorOptions">
 	<table  object-table 
-			data="data" 
+			data="data"
+			loading="isLoading"
 			data="exportDataVariable" 
 			display="10" 
 			fields="name,age,money" 

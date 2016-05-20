@@ -2,7 +2,8 @@
 <p>aggregate functions in footer</p>
 
 <table object-table 
-data="data" 
+data="data"
+	   loading="isLoading"
 headers="Name, Age,Money" 
 fields="name,age,money" 
 search="separate" 
@@ -32,7 +33,8 @@ selected-model="report.selectedUser"
 <h3>In template:</h3>
 <textarea ui-codemirror ui-codemirror-opts="editorOptions">
 	<table  object-table 
-			data="data" 
+			data="data"
+			loading="isLoading"
 			headers="Name, Age,Money" 
 			fields="name,age,money" 
 			search="separate" 
