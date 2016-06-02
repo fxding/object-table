@@ -1,8 +1,8 @@
 <div class="object-table-module">
-	<div class="top-container container-fluid" ng-if="showSortBadge || (!search && 'separate'==search)">
+	<div class="top-container container-fluid" ng-if="!hideSortBadge || (search && 'separate'!=search)">
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-8" style="padding: 0;">
-                <div ng-if="sortingType && sort.fields.length && showSortBadge" class="sorting-container">
+                <div ng-if="sortingType && sort.fields.length && !hideSortBadge" class="sorting-container">
                     <button ng-repeat="sortField in sort.fields" class="sorting-badge" ng-click="sortBy(fields[headers.indexOf(sortField)])">
                         <span class="glyphicon" ng-class="{'glyphicon-chevron-down':sort.reverse[$index], 'glyphicon-chevron-up':!sort.reverse[$index]}"></span>
                         {{::sortField}}

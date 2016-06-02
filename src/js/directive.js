@@ -18,7 +18,7 @@ angular.module('objectTable').directive('objectTable', ['$compile','$interpolate
       //headers:"@",
       //fields:"@",
       sortingType: '@?sorting',
-      showSortBadge: '=?',
+      hideSortBadge: '=?',
       editable: '&?',
       select: '@?',
       selectedModel: '=?',
