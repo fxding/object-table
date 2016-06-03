@@ -7,7 +7,7 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
     this._init = function() {
     $scope.headers = [];
     $scope.fields = [];
-    $scope.display = $scope.display || 5;
+    $scope.display = $scope.display || 10;
     $scope.paging = angular.isDefined($scope.paging) ? $scope.paging : true;
     $scope.sortingType = $scope.sortingType || 'simple';
     $scope.currentPage = 0;
