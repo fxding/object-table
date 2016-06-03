@@ -38,6 +38,11 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
       this.onEdit = $scope.onEdit;
     }
 
+    // get table class
+    if (!!$attrs.tableClasses) {
+      $scope.customClasses = $attrs.tableClasses;
+    }
+
     //reinitialize selected model~`
     $scope.selectedModel = $scope.select === 'multiply' ? [] : {};
 
