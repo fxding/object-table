@@ -1,5 +1,5 @@
 <div class="object-table-module">
-	<div class="top-container container-fluid" ng-if="!hideSortBadge || (search && 'separate'!=search)">
+	<div class="top-container container-fluid" ng-if="(!hideSortBadge && !!sorting) || (search && 'separate'!=search)">
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-8" style="padding: 0;">
                 <div ng-if="sortingType && sort.fields.length && !hideSortBadge" class="sorting-container">
