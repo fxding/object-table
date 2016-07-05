@@ -56,7 +56,7 @@ angular.module('objectTable').directive('objectTable', ['$compile','$interpolate
         });
 
       } else if (typeof(tAttributes.search) === 'undefined' || tAttributes.search === 'true') {
-        rowFilter += '| filter:globalSearch';
+        rowFilter += '| filter:ctrl.globalSearch';
       }
 
       //pagingFilter = rowFilter;

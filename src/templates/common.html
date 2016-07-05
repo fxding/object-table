@@ -12,7 +12,7 @@
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4" ng-if="search && 'separate'!=search" style="padding: 0;">
                 <div class="search-container">
-                    <input type="text"  placeholder="Search" ng-model="$parent.globalSearch" class="pull-right form-control search" ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0 } }" ng-change="setCurrentPageForPageCtrl(0)"/>
+                    <input type="text"  placeholder="Search" ng-model="ctrl.globalSearch" class="pull-right form-control search" ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0 } }" ng-change="setCurrentPageForPageCtrl(0)"/>
                     <i class="glyphicon glyphicon-search search_icon"></i>
                 </div>
             </div>
