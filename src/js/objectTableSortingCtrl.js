@@ -6,7 +6,7 @@ angular.module('objectTable').controller('objectTableSortingCtrl', ['$scope',
 
         $scope.sort = {
             fields: [], // array to store readable sorted headers
-            reverse: [] // array to store reversing for each field
+            ascending: [] // sorting directions for each field
         };
 
         $scope.sortingArray = [];
@@ -23,7 +23,7 @@ angular.module('objectTable').controller('objectTableSortingCtrl', ['$scope',
                     if ($scope.sort.fields.indexOf(sortedHeader) == -1) {
                         $scope.sort.fields.push(sortedHeader);
                         $scope.sortingArray.push(field);
-                        $scope.sort.reverse.push(false);
+                        $scope.sort.ascending.push(false);
                     } else {
                         $scope.changeReversing(field, $scope.sort.fields.indexOf(sortedHeader));
                     }
@@ -38,11 +38,11 @@ angular.module('objectTable').controller('objectTableSortingCtrl', ['$scope',
 
         $scope.changeReversing = function(sortProperty, indexOfHeader) {
             if ($scope.sortingType == 'compound') {
-                $scope.sort.reverse[indexOfHeader] = !$scope.sort.reverse[indexOfHeader];
-                $scope.sortingArray[indexOfHeader] = $scope.sort.reverse[indexOfHeader] ? "-" + sortProperty : sortProperty;
+                $scope.sort.ascending[indexOfHeader] = !$scope.sort.ascending[indexOfHeader];
+                $scope.sortingArray[indexOfHeader] = $scope.sort.ascending[indexOfHeader] ? "-" + sortProperty : sortProperty;
             } else if ($scope.sortingType == 'simple') {
-                $scope.sort.reverse[0] = !$scope.sort.reverse[0];
-                $scope.sortingArray = $scope.sort.reverse[0] ? [sortProperty] : ["-" + sortProperty];
+                $scope.sort.ascending[0] = !$scope.sort.ascending[0];
+                $scope.sortingArray = $scope.sort.ascending[0] ? [sortProperty] : ["-" + sortProperty];
             }
         };
 
@@ -52,12 +52,12 @@ angular.module('objectTable').controller('objectTableSortingCtrl', ['$scope',
 
             if ($scope.sortingType == 'simple') {
               if (field == $scope.sort.fields[0] || "-" + field == $scope.sort.fields[0]) {
-                    return $scope.sort.reverse[0] ? 'table-sort-down' : 'table-sort-up';
+                    return $scope.sort.ascending[0] ? 'table-sort-up' : 'table-sort-down';
               }
             } else if ($scope.sortingType == 'compound') {
                 var rowIndex = $scope.sort.fields.indexOf(field);
                 if (rowIndex != -1) {
-                    return $scope.sort.reverse[rowIndex] ? 'table-sort-down' : 'table-sort-up';
+                    return $scope.sort.ascending[rowIndex] ? 'table-sort-up' : 'table-sort-down';
                 }
             }
         };
@@ -67,7 +67,7 @@ angular.module('objectTable').controller('objectTableSortingCtrl', ['$scope',
             var index = $scope.sort.fields.indexOf(this.sortField);
             if (index > -1) {
                 $scope.sort.fields.splice(index, 1);
-                $scope.sort.reverse.splice(index, 1);
+                $scope.sort.ascending.splice(index, 1);
                 $scope.sortingArray.splice(index, 1);
             }
             index = null;

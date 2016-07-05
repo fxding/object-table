@@ -4,7 +4,7 @@
             <div class="col-xs-12 col-sm-6 col-md-8" style="padding: 0;">
                 <div ng-if="sortingType && sort.fields.length && !hideSortBadge" class="sorting-container">
                     <button ng-repeat="sortField in sort.fields" class="sorting-badge" ng-click="sortBy(fields[headers.indexOf(sortField)])">
-                        <span class="glyphicon" ng-class="{'glyphicon-chevron-down':sort.reverse[$index], 'glyphicon-chevron-up':!sort.reverse[$index]}"></span>
+                        <span class="glyphicon" ng-class="{'glyphicon-chevron-down':!sort.ascending[$index], 'glyphicon-chevron-up':sort.ascending[$index]}"></span>
                         {{::sortField}}
                         <span class="glyphicon glyphicon-remove close" ng-click="removeSorting()"></span>
                     </button>
