@@ -120,7 +120,15 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
 
   };
 
+    $scope.settable = function () {
+      var select = $scope.select;
+      return !(select==='false' || select === false)
+    };
+    
     $scope.setSelected = function(item) {
+      if (!$scope.settable()) {
+        return;
+      }
     if ($scope.select === 'multiply') {
       if (!ctrl._containsInSelectArray(item)) {
         $scope.selectedModel.push(item);
@@ -140,7 +148,9 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
   };
 
     $scope.ifSelected = function(item) {
-
+      if (!$scope.settable()) {
+        return;
+      }
       if (!!$scope.selectedModel && $scope.select === 'multiply') {
         return ctrl._containsInSelectArray(item);
       }else {
