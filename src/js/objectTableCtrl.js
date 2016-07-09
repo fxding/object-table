@@ -1,5 +1,5 @@
-angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout','$element', '$attrs','$http', '$compile', '$controller', 'objectTableUtilService',
-  function angTableCtrl($scope, $timeout, $element, $attrs, $http, $compile, $controller, Util) {
+angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout','$element', '$attrs','$http', '$compile', '$controller', '$parse', 'objectTableUtilService',
+  function angTableCtrl($scope, $timeout, $element, $attrs, $http, $compile, $controller, $parse, Util) {
 
     $controller('objectTableSortingCtrl', {$scope: $scope});
     var ctrl = this;
@@ -101,9 +101,23 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
       td.innerHTML = '<div contentEditable ng-model=\'' + innerModel + '\'>{{' + innerModel + '}}</div>';
     });
   };
+    
+    $scope.createGetterSetter = function (model, path) {
+      var getter = $parse(path);
+      var setter = getter.assign;
+      return function (nValue) {
+        return arguments.length ? setter(model, nValue): getter(model);
+      }
+    };
+    
+    $scope.getModelValue = function (model, path) {
+      var getter = $parse(path);
+      return getter(model);
+    };
 
     this.setCurrentPage = function(_currentPage) {
     $scope.currentPage = _currentPage;
+
   };
 
     $scope.setSelected = function(item) {
